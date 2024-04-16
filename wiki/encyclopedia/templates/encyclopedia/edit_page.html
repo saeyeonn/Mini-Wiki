@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit " {{ entry_name }} "
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="mt-4 mb-4">Edit "{{ entry_name }}"</h1>
+                <form action="{% url 'edit_page' entry_name %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" id="content" name="content" rows="10" required>{{ entry_content }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: gray; border-color: gray;">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
